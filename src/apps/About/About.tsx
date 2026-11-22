@@ -5,7 +5,7 @@ function About() {
     <div className="about-app">
       <div className="about-profile">
         <div className="about-profile-image">
-          <img src="public/images/profile_img.jpg" alt="Khushraj Rane" />
+          <img src="/images/profile_img.jpg" alt="Khushraj Rane" />
         </div>
 
         <div className="about-profile-info">
