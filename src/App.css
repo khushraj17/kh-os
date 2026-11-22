@@ -1,0 +1,595 @@
+.desktop {
+  position: fixed;
+  inset: 0;
+
+  width: 100%;
+  height: 100dvh;
+
+  overflow: hidden;
+  isolation: isolate;
+
+  background: #171b18;
+}
+
+
+.wallpaper {
+  position: absolute;
+  inset: 0;
+
+  background-image: url("public/images/back_img1.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.desktop-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(8, 12, 10, 0.12) 0%,
+      transparent 35%,
+      rgba(8, 12, 10, 0.12) 65%,
+      rgba(8, 12, 10, 0.42) 100%
+    );
+}
+
+/* Desktop Icon Container */
+
+.desktop-icons {
+  position: absolute;
+  inset: 0 0 32px 0;
+  z-index: 2;
+}
+/* Individual Icon */
+
+.desktop-icon {
+  width: 90px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+
+  color: white;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Icon Visual */
+
+.desktop-icon-visual {
+  width: 64px;
+  height: 64px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  backdrop-filter: blur(12px);
+
+  transition: background 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+/* Label */
+
+.desktop-icon-label {
+  font-size: 12px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.9);
+  transition: background 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+/* Hover */
+
+.desktop-icon:hover .desktop-icon-visual {
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.16);
+}
+
+
+.desktop-icon.selected .desktop-icon-visual {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.22);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
+.desktop-icon.selected .desktop-icon-label {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 5px;
+  padding: 3px 7px;
+  color: #ffffff;
+}
+
+/* Menu Bar */
+.menu-bar {
+  position: absolute;
+  bottom: 0;
+  top: auto;
+  left: 0;
+  right: 0;
+  height: 32px;
+  z-index: 99999;
+
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+
+  padding: 0 14px;
+
+  background: rgba(16, 15, 15, 0);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(12px);
+
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 12px;
+}
+
+.menu-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Left Section */
+
+.menu-left,
+.menu-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.menu-right {
+  justify-content: flex-end;
+}
+
+.os-logo {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  color: #b2d8bb;
+}
+
+.menu-item {
+  opacity: 0.75;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.menu-item:hover {
+  opacity: 1;
+}
+
+.active-app {
+  font-weight: 600;
+  opacity: 1;
+}
+
+/* Right Section */
+
+.menu-right {
+  gap: 12px;
+}
+
+.menu-right svg {
+  opacity: 0.85;
+}
+
+.menu-date {
+  opacity: 0.8;
+  margin-left: 4px;
+}
+
+.menu-time {
+  font-weight: 600;
+}
+
+/* Dock */
+.dock {
+  position: static;
+  transform: none;
+  z-index: auto;
+
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  padding: 0;
+
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+/* Dock buttons */
+
+.dock-item {
+  width: 30px;
+  height: 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  border-radius: 7px;
+
+  background: transparent;
+  color: #e8eee9;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+
+.dock-item:hover {
+  transform: translateY(-16px) scale(1.5);
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.dock-item:active {
+  transform: scale(1.5);
+}
+
+
+/* Application Window */
+
+.app-window {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 680px;
+  height: 440px;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+
+  background: rgba(20, 24, 22, 0.94);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.4);
+
+  color: white;
+}
+
+/* Window Titlebar */
+
+.window-titlebar {
+
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
+
+
+  position: relative;
+
+  height: 42px;
+  min-height: 42px;
+
+  display: flex;
+  align-items: center;
+
+  padding: 0 14px;
+
+  background: rgba(255, 255, 255, 0.035);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Window Controls */
+
+.window-controls {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.window-control {
+  width: 12px;
+  height: 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+
+  cursor: pointer;
+}
+
+.window-control svg {
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.window-controls:hover .window-control svg {
+  opacity: 1;
+}
+
+.window-control.close {
+  background: #ff5f57;
+}
+
+.window-control.minimize {
+  background: #febc2e;
+}
+
+.window-control.maximize {
+  background: #28c840;
+}
+
+/* Title */
+
+.window-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+/* Content */
+
+.window-content {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+
+  padding: 24px;
+}
+
+.window-titlebar:active {
+  cursor: grabbing;
+}
+
+.app-window.maximized {
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: calc(100% - 32px) !important;
+  transform: none !important;
+  border-radius: 0;
+}
+
+/* Base resize handle */
+.resize-handle {
+  position: absolute;
+  z-index: 20;
+  touch-action: none;
+}
+
+/* Right edge */
+.resize-right {
+  top: 8px;
+  right: -3px;
+  width: 8px;
+  height: calc(100% - 16px);
+  cursor: ew-resize;
+}
+
+/* Bottom edge */
+.resize-bottom {
+  bottom: -3px;
+  left: 8px;
+  width: calc(100% - 16px);
+  height: 8px;
+  cursor: ns-resize;
+}
+
+/* Bottom-right corner */
+.resize-corner {
+  bottom: -3px;
+  right: -3px;
+  width: 14px;
+  height: 14px;
+  cursor: nwse-resize;
+}
+
+/* Active window */
+.app-window.active-window {
+  border-color: rgba(160, 190, 170, 0.24);
+  box-shadow:
+    0 24px 80px rgba(0, 0, 0, 0.42),
+    0 0 0 1px rgba(160, 190, 170, 0.08);
+}
+
+/* Inactive windows */
+.app-window.inactive-window {
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.22);
+}
+
+/* Active titlebar */
+.active-window .window-titlebar {
+  background: rgba(255, 255, 255, 0.035);
+}
+
+/* Inactive titlebar */
+.inactive-window .window-titlebar {
+  background: rgba(255, 255, 255, 0.015);
+}
+
+/* Window control base */
+.window-control {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  padding: 0;
+  transition:
+    transform 160ms ease,
+    filter 160ms ease,
+    background 160ms ease;
+}
+
+/* Hover interaction */
+.window-control:hover {
+  transform: scale(1.12);
+  filter: brightness(1.15);
+}
+
+/* Close */
+.window-control.close {
+  background: #ff5f57;
+  color: #54120e;
+}
+
+/* Minimize */
+.window-control.minimize {
+  background: #febc2e;
+  color: #684700;
+}
+
+/* Maximize */
+.window-control.maximize {
+  background: #28c840;
+  color: #064d18;
+}
+
+/* Icon visibility */
+.window-control svg {
+  opacity: 0;
+  transition: opacity 150ms ease;
+}
+
+.window-controls:hover .window-control svg {
+  opacity: 1;
+}
+
+.window-titlebar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 42px;
+  padding: 0 14px;
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
+}
+
+.window-titlebar:active {
+  cursor: grabbing;
+}
+
+.window-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 2;
+}
+
+.window-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.72);
+  pointer-events: none;
+}
+
+.context-menu {
+  position: fixed;
+  width: 210px;
+  padding: 6px;
+  background: rgb(0, 0, 0);
+  backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+  z-index: 9999;
+  animation: contextMenuIn 120ms ease-out;
+}
+
+.context-menu button {
+  width: 100%;
+  padding: 9px 10px;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  color: rgba(255, 255, 255, 0.85);
+  text-align: left;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.context-menu button:hover {
+  background: rgba(255, 255, 255, 0.09);
+}
+
+.context-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+  margin: 5px 4px;
+}
+
+@keyframes contextMenuIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.desktop-icons.refreshing .desktop-icon {
+  animation: desktopIconRefresh 400ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes desktopIconRefresh {
+  0% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: blur(0);
+  }
+
+  25% {
+    opacity: 0;
+    transform: scale(0.88) translateY(-9px);
+    filter: blur(1px);
+  }
+  50% {
+    opacity: 0;
+    transform: scale(0.10) translateY(6px);
+    filter: blur(4px);
+  }
+
+  75% {
+    opacity: 0;
+    transform: scale(0.96) translateY(-3px);
+    filter: blur(10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: blur(0);
+  }
+}
