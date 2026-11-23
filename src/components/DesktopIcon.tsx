@@ -115,7 +115,7 @@ function DesktopIcon({
 
           onClick();
 
-          if (window.matchMedia("(max-width: 768px)").matches) {
+          if (window.matchMedia("(max-width: 500px)").matches) {
             onDoubleClick();
           }
         }}
