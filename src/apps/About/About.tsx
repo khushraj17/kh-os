@@ -2,42 +2,37 @@ import "./About.css";
 
 function About() {
   return (
-    <div className="about-app">
-      <div className="about-profile">
-        <div className="about-profile-image">
-          <img src="/images/profile_img.jpg" alt="Khushraj Rane" />
-        </div>
+    <div className="about-canvas">
+      <main className="about-main">
+  <section className="about-identity">
+    {/* <span className="about-label">
+      HUMAN / IDEAS / MACHINE / POSSIBILITIES
+    </span> */}
 
-        <div className="about-profile-info">
-          <span className="about-eyebrow">USER PROFILE / 001</span>
+    <h1 className="about-name">
+      DECODING 
+      <br />
+      <span>THE</span>
+      <br />
+      UNKNOWN
+    </h1>
 
-          <h1>Khushraj Rane</h1>
+    <p className="about-role">
+      AI / MACHINE LEARNING ENGINEER
+    </p>
 
-          <p className="about-role">
-            AI & Machine Learning Engineer
-          </p>
+    <p className="about-description">
+      Curious by nature, driven by questions, and fascinated by how intelligence works.
+      I turn curiosity into experiments, ideas into code, and concepts into things that exist.
+    </p>
 
-          <span className="about-location">
-            Bhopal, India
-          </span>
-        </div>
-      
-      </div>
-      <div className="about-introduction">
-  <span className="about-eyebrow">01 / INTRODUCTION</span>
+    <div className="about-status">
+      <span className="status-indicator" />
+      LEARN   |   EXPERIMENT   |   CREATE
+    </div>
+  </section>
+</main>
 
-  <h2>
-    Curiosity drives
-    <span> my code.</span>
-  </h2>
-
-  <p>
-    I'm an engineering student focused on understanding how
-    intelligent systems work and turning ideas into practical
-    applications. I enjoy exploring AI, solving problems, and
-    building software that has a purpose.
-  </p>
-</div>
     </div>
   );
 }

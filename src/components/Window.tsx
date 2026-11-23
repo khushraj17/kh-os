@@ -1,3 +1,6 @@
+import "./window.css"
+import { animateGenie } from "../utils/windowAnimation";
+
 import { useState, useRef, type ReactNode, useEffect } from "react";
 import { X, Minus, Square } from "lucide-react";
 
@@ -18,6 +21,8 @@ type WindowProps = {
         x: number;
         y: number;
     };
+  dockElement: HTMLButtonElement | null;
+  minimized: boolean;
 };
 
 function Window({
@@ -34,11 +39,55 @@ function Window({
     onResize,
     active,
     initialPosition,
+    dockElement,
+    minimized,
  }: WindowProps) {
   const [position, setPosition] = useState<{ x: number; y: number } | null>(initialPosition);
   const previousPosition = useRef<{ x: number; y: number } | null>(null);
   const windowRef = useRef<HTMLElement | null>(null);
+  const [isAnimating, setIsAnimating] = useState(false);
 
+  const previousMinimized = useRef(minimized);
+
+useEffect(() => {
+  if (
+    previousMinimized.current &&
+    !minimized &&
+    dockElement &&
+    windowRef.current
+  ) {
+    const windowRect = windowRef.current.getBoundingClientRect();
+    const dockRect = dockElement.getBoundingClientRect();
+
+    setIsAnimating(true);
+
+    const animation = animateGenie(
+      windowRef.current,
+      {
+        x: windowRect.x,
+        y: windowRect.y,
+        width: windowRect.width,
+        height: windowRect.height,
+      },
+      {
+        x: dockRect.x,
+        y: dockRect.y,
+        width: dockRect.width,
+        height: dockRect.height,
+      },
+      true // reverse animation
+    );
+
+    animation.finished
+      .catch(() => {})
+      .finally(() => {
+        animation.cancel();
+        setIsAnimating(false);
+      });
+  }
+
+  previousMinimized.current = minimized;
+}, [minimized, dockElement]);
 
 useEffect(() => {
   if (!maximized && previousPosition.current) {
@@ -46,6 +95,43 @@ useEffect(() => {
   }
 }, [maximized]);
 
+
+  const handleMinimize = async () => {
+  if (!windowRef.current || !dockElement) {
+    onMinimize();
+    return;
+  }
+
+  const windowRect = windowRef.current.getBoundingClientRect();
+  const dockRect = dockElement.getBoundingClientRect();
+
+  const animation = animateGenie(
+    windowRef.current,
+    {
+      x: windowRect.x,
+      y: windowRect.y,
+      width: windowRect.width,
+      height: windowRect.height,
+    },
+    {
+      x: dockRect.x,
+      y: dockRect.y,
+      width: dockRect.width,
+      height: dockRect.height,
+    }
+  );
+
+  setIsAnimating(true);
+
+  try {
+    await animation.finished;
+  } catch {
+    // Animation may be cancelled
+  }
+
+  onMinimize();
+  setIsAnimating(false);
+};
 
   const handleToggleMaximize = () => {
     if (!maximized && windowRef.current) {
@@ -81,7 +167,7 @@ useEffect(() => {
     event: React.PointerEvent<HTMLDivElement>,
     direction: "right" | "bottom" | "corner"
     ) => {
-    if (maximized) return;
+    if (maximized || isAnimating) return;
 
     event.preventDefault();
     event.stopPropagation();
@@ -99,11 +185,11 @@ useEffect(() => {
     };
 
 
-    const handleResizeMove = (
-  event: React.PointerEvent<HTMLDivElement>
-) => {
-  if (!resizeStart.current || !resizeDirection.current) return;
-
+  const handleResizeMove = (
+      event: React.PointerEvent<HTMLDivElement>
+    ) => {
+  if (isAnimating || !resizeStart.current || !resizeDirection.current) return;
+  
   const deltaX = event.clientX - resizeStart.current.x;
   const deltaY = event.clientY - resizeStart.current.y;
 
@@ -136,6 +222,7 @@ const handleResizeEnd = (
 };
 
   const handlePointerDown = (event: React.PointerEvent<HTMLElement>) => {
+    if (isAnimating) return;
     if ((event.target as HTMLElement).closest(".window-controls")) return;
 
     const rect = event.currentTarget.parentElement!.getBoundingClientRect();
@@ -151,6 +238,7 @@ const handleResizeEnd = (
   };
 
 const handlePointerMove = (event: React.PointerEvent<HTMLElement>) => {
+  if (isAnimating) return;
   if (!event.currentTarget.hasPointerCapture(event.pointerId)) return;
   if (maximized) return;
 
@@ -182,8 +270,10 @@ const handlePointerMove = (event: React.PointerEvent<HTMLElement>) => {
         
         ref={windowRef}
         className={`app-window ${maximized ? "maximized" : ""} ${
-                active ? "active-window" : "inactive-window"
-            }`} 
+            active ? "active-window" : "inactive-window"
+          } ${isAnimating ? "animating" : ""} ${
+            minimized ? "minimized-window" : ""
+          }`}
         style={{
             zIndex,
             width,
@@ -216,7 +306,7 @@ const handlePointerMove = (event: React.PointerEvent<HTMLElement>) => {
           <button 
             className="window-control minimize" 
             aria-label="Minimize"
-            onClick={onMinimize}
+            onClick={handleMinimize}
           >
             <Minus size={12} />
           </button>

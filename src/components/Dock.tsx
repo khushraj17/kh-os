@@ -1,3 +1,4 @@
+import { type RefObject } from "react";
 import {
   UserRound,
   FolderKanban,
@@ -9,6 +10,8 @@ import {
 
 type DockProps = {
   onOpenApp: (id: string) => void;
+  dockRefs: RefObject<Record<string, HTMLButtonElement | null>>;
+
 };
 
 const dockItems = [
@@ -20,7 +23,7 @@ const dockItems = [
   { id: "terminal", label: "Terminal", icon: Terminal },
 ];
 
-function Dock({onOpenApp}: DockProps) {
+function Dock({ onOpenApp, dockRefs }: DockProps) {
   return (
     <nav className="dock" onClick={(event) => event.stopPropagation()}>
       {dockItems.map((item) => {
@@ -29,6 +32,9 @@ function Dock({onOpenApp}: DockProps) {
         return (
           <button
             key={item.id}
+            ref={(element) => {
+              dockRefs.current[item.id] = element;
+            }}
             className="dock-item"
             title={item.label}
             onClick={() => onOpenApp(item.id)}

@@ -1,0 +1,47 @@
+/* Window opening */
+@keyframes windowOpen {
+  from {
+    opacity: 0;
+    transform: scale(0.88);
+    filter: blur(4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+  }
+}
+
+/* Window closing */
+@keyframes windowClose {
+  from {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: scale(0.88);
+    filter: blur(4px);
+  }
+}
+
+.app-window {
+  animation: windowOpen 220ms cubic-bezier(0.16, 1, 0.3, 1);
+  transform-origin: center center;
+  will-change: transform, opacity, filter;
+}
+
+.app-window.animating {
+  pointer-events: none;
+  overflow: hidden;
+  will-change: transform, opacity, border-radius;
+  transform-origin: center center;
+}
+
+.app-window.minimized-window {
+  visibility: hidden;
+  pointer-events: none;
+}

@@ -1,13 +1,15 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, type RefObject } from "react";
 import { Wifi, BatteryFull, Volume2 } from "lucide-react";
 import Dock from "./Dock";
 
 type MenuBarProps = {
   onOpenApp: (id: string) => void;
+  dockRefs: RefObject<Record<string, HTMLButtonElement | null>>;
+
 };
 
 
-function MenuBar({ onOpenApp }: MenuBarProps) {
+function MenuBar({ onOpenApp, dockRefs }: MenuBarProps) {
   const [currentTime, setCurrentTime] = useState(new Date());
 
   useEffect(() => {
@@ -40,7 +42,10 @@ function MenuBar({ onOpenApp }: MenuBarProps) {
       </div>
 
       <div className="menu-center">
-        <Dock onOpenApp={onOpenApp} />
+        <Dock 
+          onOpenApp={onOpenApp}
+          dockRefs={dockRefs}
+         />
       </div>
 
       <div className="menu-right">

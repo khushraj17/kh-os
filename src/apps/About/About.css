@@ -1,91 +1,144 @@
-.about-app {
-  display: flex;
-  flex-direction: column;
-  padding: 24px;
-  gap: 28px;
-  color: #e8ece9;
-  font-family: inherit;
-}
-.about-profile {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-  padding: 24px;
-  background: rgba(255, 255, 255, 0.035);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 14px;
-}
 
-.about-profile-image {
-  width: 150px;
-  height: 170px;
-  flex-shrink: 0;
-  overflow: hidden;
-  border-radius: 10px;
-  border: 1px solid rgba(130, 170, 145, 0.25);
-  background: #202824;
-}
 
-.about-profile-image img {
+.about-canvas {
+  --about-bg: #0b0b0d;
+  --about-silver: #c5c7cc;
+  --about-muted: #85868d;
+  --about-crimson: #ff1744;
+  --about-border: #29292e;
+
+  position: absolute;
+  inset: 0;
+
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  display: block;
-}
+  min-height: 0;
+  box-sizing: border-box;
 
-.about-profile-info {
+  padding: 28px;
+
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.12),
+      rgba(0, 0, 0, 0.05)
+    ),
+    url("/images/aboutme-Background.png");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  color: var(--about-silver);
+
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 24px;
+
+  overflow: hidden;
+  container-type: inline-size;
 }
 
-.about-eyebrow {
-  font-size: 10px;
-  letter-spacing: 2px;
-  color: #88a994;
+.about-main {
+  flex: 1;
+  min-height: 0;
+
+  display: flex;
+  align-items: center;
+
+  position: relative;
+  z-index: 1;
+}
+
+.about-identity {
+  width: 65%;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+}
+
+.about-label {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: var(--about-muted);
+  margin-bottom: 24px;
+}
+
+.about-name {
+  font-family: "Michroma", sans-serif;
+  font-size: clamp(28px, 5vw, 68px);
   font-weight: 600;
-}
-
-.about-profile-info h1 {
+  line-height: 0.95;
+  letter-spacing: clamp(-2px, -0.15vw, -0.5px);
   margin: 0;
-  font-size: 30px;
-  font-weight: 600;
-  letter-spacing: -0.8px;
+  white-space: normal;
+  overflow-wrap: normal;
+
+  color: #c5c7cc;
+}
+
+.about-name span {
+  color: #ff0033;
 }
 
 .about-role {
-  margin: 0;
-  font-size: 14px;
-  color: #9fbaa8;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 10px;
+  letter-spacing: 2.5px;
+  color: #ff1744;
+  margin-top: 22px;
 }
 
-.about-location {
-  font-size: 12px;
-  color: #858e88;
-}
+.about-description {
+  font-family: "Syne", sans-serif;
+  font-size: 18px;
+  color: #a0a0a6;
 
-.about-introduction {
-  margin-top: 28px;
-  padding: 8px 4px;
-}
-
-.about-introduction h2 {
-  font-size: 30px;
-  line-height: 1.2;
-  letter-spacing: -1px;
-  margin: 14px 0;
-  font-weight: 600;
-  color: #e8ece9;
-}
-
-.about-introduction h2 span {
-  color: #8eae98;
-}
-
-.about-introduction p {
   max-width: 600px;
-  font-size: 14px;
-  line-height: 1.8;
-  color: #a7b0aa;
-  margin: 0;
+  margin-top: 12px;
+}
+
+/* Status */
+.about-status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  margin-top: 26px;
+
+  font-family: "Michroma", sans-serif;
+  font-size: 9px;
+  letter-spacing: 1.8px;
+
+  color: #c5c7cc;
+}
+
+/* Crimson status indicator */
+.status-indicator {
+  width: 7px;
+  height: 7px;
+  flex-shrink: 0;
+
+  border-radius: 50%;
+  background: #ff1744;
+
+  box-shadow: 0 0 8px rgba(255, 23, 68, 0.55);
+
+  animation: statusPulse 2s ease-in-out infinite;
+}
+
+/* Subtle pulse */
+@keyframes statusPulse {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 8px rgba(255, 23, 68, 0.45);
+  }
+
+  50% {
+    opacity: 0.45;
+    box-shadow: 0 0 2px rgba(255, 23, 68, 0.15);
+  }
 }

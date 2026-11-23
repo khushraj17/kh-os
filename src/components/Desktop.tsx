@@ -52,7 +52,10 @@ function Desktop() {
         contact: { x: 140, y: 140 },
         });
 
+    
+    
     const desktopRef = useRef<HTMLElement>(null);
+    const dockRefs = useRef<Record<string, HTMLButtonElement | null>>({});
     const contextMenuRef = useRef<HTMLDivElement>(null);
     const [contextMenu, setContextMenu] = useState<{
         x: number;
@@ -83,6 +86,8 @@ function Desktop() {
         };
 
 
+        
+
   const openApp = (id: string) => {
   const app = apps.find((app) => app.id === id);
 
@@ -100,7 +105,7 @@ function Desktop() {
     if (existingWindow) {
       return current.map((window) =>
         window.id === id
-          ? { ...window, zIndex: highestZ + 1 , minimized: false, maximized: false}
+          ? { ...window, zIndex: highestZ + 1 , minimized: false}
           : window
       );
     }
@@ -187,9 +192,13 @@ function Desktop() {
       <WindowManager
         windows={windows}
         setWindows={setWindows}
+        dockRefs={dockRefs}
         />
 
-      <MenuBar onOpenApp={openApp}/>
+      <MenuBar 
+      onOpenApp={openApp}
+      dockRefs={dockRefs}
+      />
 
       {contextMenu && (
   <div

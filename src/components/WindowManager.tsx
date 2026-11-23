@@ -1,4 +1,4 @@
-import type { Dispatch, SetStateAction } from "react";
+import type { Dispatch, SetStateAction, RefObject } from "react";
 import Window from "./Window";
 import type { AppWindow } from "../types/window";
 import { apps } from "../config/apps";
@@ -6,10 +6,11 @@ import { apps } from "../config/apps";
 type WindowManagerProps = {
   windows: AppWindow[];
   setWindows: Dispatch<SetStateAction<AppWindow[]>>;
+  dockRefs: RefObject<Record<string, HTMLButtonElement | null>>;
 };
 
 
-function WindowManager({ windows, setWindows }: WindowManagerProps) {
+function WindowManager({ windows, setWindows, dockRefs }: WindowManagerProps) {
 
 
   const focusWindow = (id: string) => {
@@ -26,6 +27,7 @@ function WindowManager({ windows, setWindows }: WindowManagerProps) {
     );
   });
 };
+
 
 const closeWindow = (id: string) => {
   setWindows((current) => current.filter((window) => window.id !== id));
@@ -54,7 +56,6 @@ const toggleMaximize = (id: string) => {
   return (
   <>
     {windows.map((window) => {
-      if (window.minimized) return null;
       const app = apps.find((app) => app.id === window.id);
 
       if (!app) return null;
@@ -72,6 +73,8 @@ const toggleMaximize = (id: string) => {
           onToggleMaximize={() => toggleMaximize(window.id)}
           width={window.width}
           height={window.height}
+          minimized={window.minimized}
+          dockElement={dockRefs.current[window.id] ?? null}
           onResize={(width, height) => {
             setWindows((current) =>
                 current.map((item) =>
