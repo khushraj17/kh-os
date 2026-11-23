@@ -27,25 +27,93 @@
 
 Instead of scrolling through static sections, users interact with a desktop environment — opening applications, navigating windows, exploring projects, and discovering the developer behind the system.
 
+---
+
+## `02 // USER PROFILE`
+
+<div align="center">
+
+### `Khushraj Rane`
+
+
+**AI / ML Developer · Software Engineering Enthusiast**
+
+I'm a B.Tech student specializing in Artificial Intelligence and Machine Learning, interested in building intelligent systems and understanding the technology behind them.
+
+My interests extend beyond AI into backend engineering, software development, and the architecture behind modern applications. I enjoy experimenting with technologies, solving problems, and turning ideas into functional projects.
+
+Rather than simply using tools, I aim to understand how they work under the hood — from algorithms and models to APIs, backend systems, and intelligent applications.
+
+> Curious by nature. Driven by logic. Learning by building.
+
+---
+
+## `03 // CURRENT FOCUS`
+
+| Domain | Focus |
+|---|---|
+| Artificial Intelligence | Understanding intelligent systems |
+| Machine Learning | Algorithms, model development & experimentation |
+| Generative AI | LLMs, RAG & AI-powered applications |
+| Backend Engineering | APIs, databases & system architecture |
+| Problem Solving | DSA, logic & computational thinking |
+
+---
+
+## `04 // INSTALLED APPLICATIONS`
+
+| Application | Function |
+|---|---|
+| `ABOUT` | Explore my background and introduction |
+| `PROJECTS` | Inspect projects and experiments |
+| `SKILLS` | Explore my technical stack |
+| `RESUME` | View my professional profile |
+| `CONTACT` | Connect with me |
+| `TERMINAL` | Access a terminal-inspired interface |
+
+---
+
+## `05 // SYSTEM CAPABILITIES`
+
+
+
+</div>
+
+- Interactive desktop environment
+- Dynamic application windows
+- Window focus and management
+- Minimize, maximize and close controls
+- Desktop shortcuts and application launcher
+- Dock with interactive animations
+- Genie-style minimize and restore transitions
+- Responsive mobile interface
+
+---
+
+<div align="center">
+
+## `06 // TECHNOLOGY STACK`
+
+
+
+[![Tech Stack](https://skillicons.dev/icons?i=python,cpp,js,ts,react,vite,fastapi,flask,git,github,postgres,linux&theme=dark)](https://skillicons.dev)
+
+
+
+---
+
+## `07 // DEVELOPMENT PHILOSOPHY`
+
+</div>
+
 ```text
-┌──────────────────────────────────────────────────────────┐
-│                    KH//OS                              │
-│                 SYSTEM ONLINE                           │
-├──────────────────────────────────────────────────────────┤
-│                                                      │
-│  [ ABOUT ]    [ PROJECTS ]    [ SKILLS ]             │
-│                                                      │
-│  [ RESUME ]   [ CONTACT ]      [ TERMINAL ]           │
-│                                                      │
-│                   ░▒▓█▓▒░                            │
-│                                                      │
-├──────────────────────────────────────────────────────────┤
-│  STATUS: OPERATIONAL                                  │
-│  ENVIRONMENT: INTERACTIVE DESKTOP                      │
-│  MODE: PORTFOLIO                                      │
-└──────────────────────────────────────────────────────────┘
- ```
+LEARN       -> Understand the fundamentals
+EXPLORE     -> Experiment with new technologies
+BUILD       -> Turn ideas into working systems
+DEBUG       -> Find problems and understand why
+IMPROVE     -> Refine, optimize, and build again
 
+```
 
 <br/>
 <br/>
@@ -67,25 +135,14 @@ Instead of scrolling through static sections, users interact with a desktop envi
 
 </div>
 
----
 
-<div align="center">
-
-# `KH//OS :: APPLICATIONS`
-
-### APPLICATION ECOSYSTEM
-
-`INDEPENDENT WINDOWS // INTERACTIVE ENVIRONMENT // SYSTEM INTEGRATION`
 
 ---
 
-> Every application is a window into a different part of the system.
 
-</div>
-
----
 
 ## `01 // APPLICATION INDEX`
+
 
 | ID | Application | Purpose | Status |
 |---|---|---|---|
