@@ -109,8 +109,15 @@ function DesktopIcon({
         animationDelay: `${refreshDelay}ms`,
         }}
       onClick={(event) => {
-            event.stopPropagation();
-            onClick();
+          event.stopPropagation();
+
+          if (didDrag.current) return;
+
+          onClick();
+
+          if (window.matchMedia("(max-width: 768px)").matches) {
+            onDoubleClick();
+          }
         }}
       onDoubleClick={(event) => {
             if (didDrag.current) return;

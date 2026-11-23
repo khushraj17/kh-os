@@ -1,3 +1,5 @@
+import "./Desktop.css"
+
 import {useEffect, useRef, useState } from "react";
 import DesktopIcon from "./DesktopIcon";
 import MenuBar from "./MenuBar";

@@ -1,0 +1,22 @@
+@media (max-width: 768px) {
+  .desktop-icons {
+    inset: 80px 12px 90px 12px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: 110px;
+    gap: 12px;
+    align-content: start;
+    justify-items: center;
+    overflow-y: auto;
+  }
+
+  .desktop-icon {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100%;
+    max-width: 140px;
+    height: 100%;
+    justify-content: center;
+  }
+}

@@ -1,3 +1,5 @@
+import "./Menubar.css"
+
 import { useEffect, useState, type RefObject } from "react";
 import { Wifi, BatteryFull, Volume2 } from "lucide-react";
 import Dock from "./Dock";
