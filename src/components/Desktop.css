@@ -1,4 +1,4 @@
-@media (max-width: 400px) {
+@media (max-width: 500px) {
   .desktop-icons {
     inset: 80px 12px 90px 12px;
     display: grid;
@@ -21,7 +21,7 @@
   }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 500px) {
   .desktop-icon {
     touch-action: pan-y;
     cursor: pointer;

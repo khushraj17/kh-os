@@ -47,7 +47,7 @@
 }
 
 /* Mobile app windows */
-@media (max-width: 400px) {
+@media (max-width: 500px) {
   .app-window,
   .app-window.maximized {
     position: fixed !important;
@@ -71,7 +71,7 @@
 }
 
 /* Mobile window controls */
-@media (max-width: 400px) {
+@media (max-width: 500px) {
   .window-titlebar {
     height: 48px;
     min-height: 48px;
