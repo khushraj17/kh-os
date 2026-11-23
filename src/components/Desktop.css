@@ -1,4 +1,4 @@
-@media (max-width: 500px) {
+@media (max-width: 400px) {
   .desktop-icons {
     inset: 80px 12px 90px 12px;
     display: grid;
@@ -18,5 +18,20 @@
     max-width: 140px;
     height: 100%;
     justify-content: center;
+  }
+}
+
+@media (max-width: 400px) {
+  .desktop-icon {
+    touch-action: pan-y;
+    cursor: pointer;
+  }
+
+  .desktop-icon-visual {
+    transition: transform 180ms ease;
+  }
+
+  .desktop-icon:active .desktop-icon-visual {
+    transform: scale(0.94);
   }
 }

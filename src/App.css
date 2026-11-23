@@ -108,90 +108,7 @@
   color: #ffffff;
 }
 
-/* Menu Bar */
-.menu-bar {
-  position: absolute;
-  bottom: 0;
-  top: auto;
-  left: 0;
-  right: 0;
-  height: 32px;
-  z-index: 99999;
 
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  align-items: center;
-
-  padding: 0 14px;
-
-  background: rgba(16, 15, 15, 0);
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-
-  backdrop-filter: blur(1px);
-  -webkit-backdrop-filter: blur(12px);
-
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 12px;
-}
-
-.menu-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Left Section */
-
-.menu-left,
-.menu-right {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-.menu-right {
-  justify-content: flex-end;
-}
-
-.os-logo {
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 1.2px;
-  color: #b2d8bb;
-}
-
-.menu-item {
-  opacity: 0.75;
-  cursor: pointer;
-  transition: opacity 0.2s ease;
-}
-
-.menu-item:hover {
-  opacity: 1;
-}
-
-.active-app {
-  font-weight: 600;
-  opacity: 1;
-}
-
-/* Right Section */
-
-.menu-right {
-  gap: 12px;
-}
-
-.menu-right svg {
-  opacity: 0.85;
-}
-
-.menu-date {
-  opacity: 0.8;
-  margin-left: 4px;
-}
-
-.menu-time {
-  font-weight: 600;
-}
 
 /* Dock */
 .dock {
@@ -276,6 +193,8 @@
 
   color: #c5c7cc;
 }
+
+
 /* Window Titlebar */
 
 .window-titlebar {

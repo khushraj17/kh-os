@@ -63,6 +63,7 @@ function DesktopIcon({
         };
 
     const handlePointerMove = (event: React.PointerEvent<HTMLDivElement>) => {
+      if (window.matchMedia("(max-width: 500px)").matches) return;
         if (!isDragging.current) return;
         const distance = Math.sqrt(
             (event.clientX - startPosition.current.x) ** 2 +

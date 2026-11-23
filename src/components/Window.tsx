@@ -167,6 +167,7 @@ useEffect(() => {
     event: React.PointerEvent<HTMLDivElement>,
     direction: "right" | "bottom" | "corner"
     ) => {
+      if (window.matchMedia("(max-width: 400px)").matches) return;
     if (maximized || isAnimating) return;
 
     event.preventDefault();
@@ -222,6 +223,7 @@ const handleResizeEnd = (
 };
 
   const handlePointerDown = (event: React.PointerEvent<HTMLElement>) => {
+    if (window.matchMedia("(max-width: 400px)").matches) return;
     if (isAnimating) return;
     if ((event.target as HTMLElement).closest(".window-controls")) return;
 

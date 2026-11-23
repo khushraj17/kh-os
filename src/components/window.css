@@ -45,3 +45,75 @@
   visibility: hidden;
   pointer-events: none;
 }
+
+/* Mobile app windows */
+@media (max-width: 400px) {
+  .app-window,
+  .app-window.maximized {
+    position: fixed !important;
+
+    top: 8px !important;
+    left: 8px !important;
+    right: 8px !important;
+    bottom: 76px !important;
+
+    width: auto !important;
+    height: auto !important;
+
+    min-width: 0 !important;
+    min-height: 0 !important;
+    max-width: none !important;
+    max-height: none !important;
+
+    transform: none !important;
+    border-radius: 16px !important;
+  }
+}
+
+/* Mobile window controls */
+@media (max-width: 400px) {
+  .window-titlebar {
+    height: 48px;
+    min-height: 48px;
+    padding: 0 12px;
+  }
+
+  .window-controls {
+    gap: 8px;
+  }
+
+  .window-control {
+    width: 28px;
+    height: 28px;
+  }
+
+  .window-control svg {
+    opacity: 1;
+    width: 12px;
+    height: 12px;
+  }
+
+  .window-title {
+    font-size: 11px;
+    max-width: calc(100% - 120px);
+  }
+
+  .window-control:hover {
+    transform: none;
+  }
+}
+
+/* Mobile window content */
+@media (max-width: 400px) {
+  .window-content {
+    padding: 14px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+  }
+
+  .window-content > * {
+    max-width: 100%;
+  }
+}
