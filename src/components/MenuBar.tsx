@@ -37,10 +37,10 @@ function MenuBar({ onOpenApp, dockRefs }: MenuBarProps) {
     <header className="menu-bar">
       <div className="menu-left">
         <span className="os-logo">KHUSHRAJ</span>
-        <span className="menu-item active-app">Desktop</span>
+        {/* <span className="menu-item active-app">Desktop</span>
         <span className="menu-item">File</span>
         <span className="menu-item">View</span>
-        <span className="menu-item">Window</span>
+        <span className="menu-item">Window</span> */}
       </div>
 
       <div className="menu-center">
