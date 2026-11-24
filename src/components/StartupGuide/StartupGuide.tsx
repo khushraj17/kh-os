@@ -14,14 +14,18 @@ interface StartupGuideProps {
   onEnter: () => void;
   onClose: () => void;
   isSmallScreen: boolean;
+  skipRecommendation: boolean;
 }
 
 function StartupGuide({
   onEnter,
   onClose,
   isSmallScreen,
+  skipRecommendation,
 }: StartupGuideProps) {
-  const [showWelcome, setShowWelcome] = useState(!isSmallScreen);
+  const [showWelcome, setShowWelcome] = useState(
+    !isSmallScreen || skipRecommendation
+    );
 
   return (
     <div className="startup-overlay">

@@ -5,6 +5,8 @@ import "./App.css";
 
 function App() {
 
+  const [skipRecommendation, setSkipRecommendation] = useState(false);
+
   const [isGuideOpen, setIsGuideOpen] = useState(
     () => localStorage.getItem("khos-onboarding-complete") !== "true"
   );
@@ -19,6 +21,7 @@ function App() {
   };
 
   const openWelcomeGuide = () => {
+    setSkipRecommendation(true);
     setIsGuideOpen(true);
   };
 
@@ -35,6 +38,7 @@ function App() {
           onEnter={handleEnter}
           onClose={closeWelcomeGuide}
           isSmallScreen={isSmallScreen}
+          skipRecommendation={skipRecommendation}
         />
       )}
     </>
