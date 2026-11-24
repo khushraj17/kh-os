@@ -1,0 +1,505 @@
+
+/* =====================================
+   KH//OS — RETRO STARTUP DIALOG
+===================================== */
+
+.startup-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.48);
+  backdrop-filter: blur(3px);
+
+  animation: overlayIn 0.3s ease;
+}
+
+.startup-dialog {
+  width: min(460px, calc(100vw - 32px));
+  max-height: calc(100dvh - 32px);
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+
+  background: #c0c0c0;
+  color: #111;
+
+  border: 3px outset #eeeeee;
+  border-radius: 0;
+
+  box-shadow: 8px 12px 35px rgba(0, 0, 0, 0.55);
+
+  font-family: Tahoma, Arial, sans-serif;
+
+  animation: dialogIn 0.35s ease;
+}
+
+/* =====================================
+   TITLE BAR
+===================================== */
+
+.startup-titlebar {
+  height: 34px;
+  min-height: 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 5px 0 10px;
+
+  background: linear-gradient(
+    90deg,
+    #000080,
+    #1084d0
+  );
+
+  color: white;
+
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.startup-titlebar button {
+  width: 24px;
+  height: 23px;
+
+  display: grid;
+  place-items: center;
+
+  background: #c0c0c0;
+  color: #111;
+
+  border: 2px outset white;
+  border-radius: 0;
+
+  cursor: pointer;
+}
+
+.startup-titlebar button:active {
+  border-style: inset;
+}
+
+/* =====================================
+   WELCOME CONTENT
+===================================== */
+
+.welcome-content {
+  padding: 22px;
+  overflow-y: auto;
+}
+
+.startup-label {
+  display: block;
+
+  color: #000080;
+
+  font-family: monospace;
+  font-size: 10px;
+  font-weight: bold;
+  letter-spacing: 1.5px;
+}
+
+.welcome-content h1 {
+  margin: 9px 0 7px;
+
+  color: #111;
+  font-size: clamp(22px, 5vw, 27px);
+  letter-spacing: -0.5px;
+}
+
+.welcome-description {
+  margin: 0;
+
+  color: #333;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+/* =====================================
+   GUIDE ITEMS
+===================================== */
+
+.guide-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+
+  margin: 19px 0;
+  padding: 5px 12px;
+
+  background: #d4d0c8;
+  border: 2px inset white;
+}
+
+.guide-item {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+
+  padding: 11px 2px;
+}
+
+.guide-item > svg {
+  width: 21px;
+  height: 21px;
+  flex-shrink: 0;
+
+  color: #000080;
+}
+
+.guide-item h3 {
+  margin: 0 0 3px;
+
+  color: #111;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.guide-item p {
+  margin: 0;
+
+  color: #333;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+/* =====================================
+   ENTER BUTTON
+===================================== */
+
+.enter-button {
+  width: 100%;
+  min-height: 39px;
+
+  padding: 9px 15px;
+
+  background: #c0c0c0;
+  color: #111;
+
+  border: 3px outset white;
+  border-radius: 0;
+
+  font-family: Tahoma, Arial, sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 1px;
+
+  cursor: pointer;
+  transition: none;
+}
+
+.enter-button:hover {
+  background: #c0c0c0;
+  color: #000080;
+  box-shadow: none;
+}
+
+.enter-button:active {
+  border-style: inset;
+}
+
+.startup-footer {
+  margin: 12px 0 0;
+
+  color: #555;
+  font-size: 10px;
+  text-align: center;
+}
+
+/* =====================================
+   DISPLAY WARNING
+===================================== */
+
+.warning-dialog {
+  width: min(430px, calc(100vw - 32px));
+}
+
+.startup-dialog-body {
+  display: flex;
+  align-items: center;
+  gap: 17px;
+
+  padding: 25px 22px;
+}
+
+.startup-dialog-body > svg {
+  width: 35px;
+  height: 35px;
+  flex-shrink: 0;
+
+  color: #000080;
+}
+
+.startup-dialog-body h2 {
+  margin: 0 0 8px;
+
+  color: #111;
+  font-size: 16px;
+}
+
+.startup-dialog-body p {
+  margin: 0;
+
+  color: #333;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.startup-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+
+  padding: 0 22px 20px;
+}
+
+.startup-actions button {
+  min-width: 115px;
+  min-height: 36px;
+
+  padding: 8px 12px;
+
+  background: #c0c0c0;
+  color: #111;
+
+  border: 3px outset white;
+  border-radius: 0;
+
+  font-family: Tahoma, Arial, sans-serif;
+  font-size: 12px;
+
+  cursor: pointer;
+}
+
+.startup-actions button:active {
+  border-style: inset;
+}
+
+/* =====================================
+   ANIMATIONS
+===================================== */
+
+@keyframes overlayIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes dialogIn {
+  from {
+    opacity: 0;
+    transform: scale(0.92) translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* =====================================
+   MOBILE
+===================================== */
+
+@media (max-width: 480px) {
+  .startup-dialog {
+    width: calc(100vw - 28px);
+    max-height: calc(100dvh - 28px);
+  }
+
+  .welcome-content {
+    padding: 17px;
+  }
+
+  .guide-items {
+    margin: 15px 0;
+  }
+
+  .guide-item {
+    padding: 9px 2px;
+  }
+
+  .startup-dialog-body {
+    padding: 19px 15px;
+  }
+
+  .startup-actions {
+    padding: 0 15px 16px;
+  }
+}
+
+
+
+/* =====================================
+   MOBILE STARTUP DIALOG
+===================================== */
+
+@media (max-width: 480px) {
+
+  .startup-overlay {
+    padding: 12px;
+    align-items: center;
+    justify-content: center;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .startup-dialog {
+    width: 100%;
+    max-width: 360px;
+
+    max-height: calc(100dvh - 40px);
+    margin: auto;
+
+    border-width: 3px;
+  }
+
+  /* Title bar */
+
+  .startup-titlebar {
+    height: 36px;
+    min-height: 36px;
+    padding: 0 7px 0 10px;
+    font-size: 11px;
+  }
+
+  .startup-titlebar button {
+    width: 28px;
+    height: 26px;
+  }
+
+  /* Welcome content */
+
+  .welcome-content {
+    padding: 17px 15px;
+    overflow-y: auto;
+  }
+
+  .startup-label {
+    font-size: 9px;
+  }
+
+  .welcome-content h1 {
+    font-size: 22px;
+    margin: 8px 0;
+  }
+
+  .welcome-description {
+    font-size: 11px;
+    line-height: 1.5;
+  }
+
+  /* Instructions */
+
+  .guide-items {
+    margin: 15px 0;
+    padding: 5px 9px;
+  }
+
+  .guide-item {
+    gap: 10px;
+    padding: 10px 2px;
+  }
+
+  .guide-item > svg {
+    width: 19px;
+    height: 19px;
+  }
+
+  .guide-item h3 {
+    font-size: 11px;
+  }
+
+  .guide-item p {
+    font-size: 10px;
+    line-height: 1.4;
+  }
+
+  /* Enter button */
+
+  .enter-button {
+    min-height: 44px;
+    font-size: 12px;
+  }
+
+  .startup-footer {
+    font-size: 9px;
+    line-height: 1.5;
+  }
+
+  /* Display warning */
+
+  .warning-dialog {
+    max-width: 360px;
+  }
+
+  .startup-dialog-body {
+    padding: 18px 14px;
+    gap: 12px;
+  }
+
+  .startup-dialog-body > svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .startup-dialog-body h2 {
+    font-size: 14px;
+  }
+
+  .startup-dialog-body p {
+    font-size: 11px;
+  }
+
+  .startup-actions {
+    padding: 0 14px 15px;
+    gap: 8px;
+  }
+
+  .startup-actions button {
+    flex: 1;
+    min-width: 0;
+    min-height: 42px;
+    padding: 8px 5px;
+    font-size: 10px;
+  }
+}
+
+/* =====================================
+   EXTRA SMALL PHONES
+===================================== */
+
+@media (max-width: 350px) {
+
+  .welcome-content {
+    padding: 13px 11px;
+  }
+
+  .welcome-content h1 {
+    font-size: 19px;
+  }
+
+  .guide-items {
+    padding: 4px 7px;
+  }
+
+  .guide-item {
+    gap: 8px;
+  }
+
+  .guide-item p {
+    font-size: 9px;
+  }
+
+  .startup-dialog-body {
+    gap: 8px;
+    padding: 15px 10px;
+  }
+}

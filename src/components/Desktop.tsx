@@ -39,9 +39,11 @@ function isColliding(
   );
 }
 
+type DesktopProps = {
+  onOpenWelcomeGuide: () => void;
+};
 
-
-function Desktop() {
+function Desktop({ onOpenWelcomeGuide }: DesktopProps) {
   
     const [selectedIcon, setSelectedIcon] = useState<string | null>(null);
     const [iconPositions, setIconPositions] = useState<
@@ -200,6 +202,7 @@ function Desktop() {
       <MenuBar 
       onOpenApp={openApp}
       dockRefs={dockRefs}
+      onOpenWelcomeGuide={onOpenWelcomeGuide}
       />
 
       {contextMenu && (
