@@ -1,12 +1,12 @@
-
 import { useState } from "react";
 import Desktop from "./components/Desktop";
 import StartupGuide from "./components/StartupGuide/StartupGuide";
 import "./App.css";
 
 function App() {
-  const [hasEntered, setHasEntered] = useState(
-    () => localStorage.getItem("khos-onboarding-complete") === "true"
+
+  const [isGuideOpen, setIsGuideOpen] = useState(
+    () => localStorage.getItem("khos-onboarding-complete") !== "true"
   );
 
   const [isSmallScreen] = useState(
@@ -15,19 +15,25 @@ function App() {
 
   const handleEnter = () => {
     localStorage.setItem("khos-onboarding-complete", "true");
-    setHasEntered(true);
+    setIsGuideOpen(false);
   };
+
   const openWelcomeGuide = () => {
-    setHasEntered(false);
+    setIsGuideOpen(true);
+  };
+
+  const closeWelcomeGuide = () => {
+    setIsGuideOpen(false);
   };
 
   return (
     <>
-      <Desktop onOpenWelcomeGuide={openWelcomeGuide}/>
+      <Desktop onOpenWelcomeGuide={openWelcomeGuide} />
 
-      {!hasEntered && (
+      {isGuideOpen && (
         <StartupGuide
           onEnter={handleEnter}
+          onClose={closeWelcomeGuide}
           isSmallScreen={isSmallScreen}
         />
       )}

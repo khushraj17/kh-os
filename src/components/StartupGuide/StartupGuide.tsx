@@ -1,24 +1,36 @@
 
 import { useState } from "react";
-import { Monitor, MousePointerClick, AppWindow, PanelBottom, X } from "lucide-react";
+import {
+  Monitor,
+  MousePointerClick,
+  AppWindow,
+  PanelBottom,
+  X,
+} from "lucide-react";
+
 import "./StartupGuide.css";
 
 interface StartupGuideProps {
   onEnter: () => void;
+  onClose: () => void;
   isSmallScreen: boolean;
 }
 
-function StartupGuide({ onEnter, isSmallScreen }: StartupGuideProps) {
+function StartupGuide({
+  onEnter,
+  onClose,
+  isSmallScreen,
+}: StartupGuideProps) {
   const [showWelcome, setShowWelcome] = useState(!isSmallScreen);
 
   return (
     <div className="startup-overlay">
-
       {!showWelcome ? (
         <div className="startup-dialog warning-dialog">
           <div className="startup-titlebar">
             <span>KH//OS — Display Recommendation</span>
-            <button onClick={() => setShowWelcome(true)}>
+
+            <button onClick={onClose}>
               <X size={16} />
             </button>
           </div>
@@ -45,7 +57,8 @@ function StartupGuide({ onEnter, isSmallScreen }: StartupGuideProps) {
         <div className="startup-dialog welcome-dialog">
           <div className="startup-titlebar">
             <span>KH//OS — First Startup</span>
-            <button onClick={onEnter}>
+
+            <button onClick={onClose}>
               <X size={16} />
             </button>
           </div>
@@ -96,7 +109,6 @@ function StartupGuide({ onEnter, isSmallScreen }: StartupGuideProps) {
           </div>
         </div>
       )}
-
     </div>
   );
 }
